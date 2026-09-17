@@ -12,8 +12,18 @@ A battle-tested, production-ready Docker boilerplate for running **TYPO3 v13+ / 
 
 ---
 
+## 💡 Origin & Community Preview
+
+This boilerplate was generated with AI assistance, extracted and generalized from a working TYPO3 setup running in a private development environment.
+
+> [!NOTE]
+> While based on a proven production configuration, this standalone public template is an initial release. Community feedback, real-world testing across different operating systems, and contributions are warmly welcome!
+
+---
+
 ## 📑 Table of Contents
 
+- [💡 Origin & Community Preview](#-origin--community-preview)
 - [⚡ Why FrankenPHP for TYPO3?](#-why-frankenphp-for-typo3)
 - [🏗️ Architecture Overview](#️-architecture-overview)
 - [📦 Stack Components](#-stack-components)
