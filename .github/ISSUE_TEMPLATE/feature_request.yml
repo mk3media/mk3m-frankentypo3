@@ -1,0 +1,42 @@
+name: 💡 Feature Request
+description: Suggest an idea or improvement for this TYPO3 FrankenPHP template.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting an improvement! Please describe your proposal below.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or Use Case
+      description: Is your feature request related to a problem or missing capability?
+      placeholder: I am deploying TYPO3 behind Traefik / using extension X which requires...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see implemented.
+      placeholder: Add configuration option or Dockerfile step for...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: A clear description of any alternative solutions or workarounds you've considered.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to ensure this proposal is not already discussed.
+          required: true
+        - label: I am willing to submit a pull request to implement this feature if approved.

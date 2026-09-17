@@ -1,0 +1,28 @@
+# Set default behavior for all files
+* text=auto
+
+# Explicit text files with LF line endings (required for Unix/Docker execution)
+*.sh text eol=lf
+*.bash text eol=lf
+Dockerfile text eol=lf
+Caddyfile text eol=lf
+*.ini text eol=lf
+*.php text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+Makefile text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.tar.gz binary
+*.zip binary
