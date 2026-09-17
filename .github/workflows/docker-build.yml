@@ -24,4 +24,4 @@ jobs:
           context: ./frankenphp
           file: ./frankenphp/Dockerfile
           push: false
-          tags: typo3-frankenphp:test
+          tags: mk3m-frankentypo3:test

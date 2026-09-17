@@ -1,6 +1,6 @@
 services:
   web:
-    container_name: ${COMPOSE_PROJECT_NAME:-typo3}-web
+    container_name: ${COMPOSE_PROJECT_NAME:-mk3m-frankentypo3}-web
     build:
       context: ./frankenphp
       dockerfile: Dockerfile
@@ -38,7 +38,7 @@ services:
       - default
 
   db:
-    container_name: ${COMPOSE_PROJECT_NAME:-typo3}-db
+    container_name: ${COMPOSE_PROJECT_NAME:-mk3m-frankentypo3}-db
     image: mariadb:lts
     restart: unless-stopped
     security_opt:
@@ -64,7 +64,7 @@ services:
       - default
 
   valkey:
-    container_name: ${COMPOSE_PROJECT_NAME:-typo3}-valkey
+    container_name: ${COMPOSE_PROJECT_NAME:-mk3m-frankentypo3}-valkey
     image: valkey/valkey:7-alpine
     restart: unless-stopped
     security_opt:
@@ -83,4 +83,4 @@ services:
 
 networks:
   default:
-    name: ${COMPOSE_PROJECT_NAME:-typo3}_net
+    name: ${COMPOSE_PROJECT_NAME:-mk3m-frankentypo3}_net

@@ -1,5 +1,10 @@
 FROM dunglas/frankenphp:1.12.4-php8.4-bookworm
 
+LABEL org.opencontainers.image.title="mk3m-frankentypo3" \
+      org.opencontainers.image.description="High-performance TYPO3 runtime with FrankenPHP, Caddy, and Valkey" \
+      org.opencontainers.image.authors="mk3media" \
+      org.opencontainers.image.licenses="GPL-2.0"
+
 # Install PHP extensions required and recommended for TYPO3 v13+
 RUN install-php-extensions \
     mysqli \

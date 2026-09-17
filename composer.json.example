@@ -1,6 +1,6 @@
 {
-    "name": "my-vendor/typo3-frankenphp-site",
-    "description": "TYPO3 CMS on FrankenPHP & Valkey",
+    "name": "mk3media/mk3m-frankentypo3",
+    "description": "TYPO3 CMS on FrankenPHP (Caddy) & Valkey",
     "license": "GPL-2.0-or-later",
     "type": "project",
     "config": {

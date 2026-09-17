@@ -1,6 +1,6 @@
-# Contributing to TYPO3 FrankenPHP
+# Contributing to mk3m-frankentypo3
 
-Thank you for helping improve the **TYPO3 FrankenPHP & Valkey Docker** setup! We welcome feedback, improvements, bug reports, and contributions from the community.
+Thank you for helping improve **mk3m-frankentypo3** (TYPO3 on FrankenPHP & Valkey)! We welcome feedback, improvements, bug reports, and contributions from the community.
 
 ---
 

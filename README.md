@@ -1,6 +1,6 @@
-# Modern TYPO3 on FrankenPHP (Caddy + PHP 8.4) & Valkey
+# mk3m-frankentypo3: Modern TYPO3 on FrankenPHP & Valkey
 
-[![CI Build Check](https://github.com/your-username/typo3-frankenphp-template/actions/workflows/docker-build.yml/badge.svg)](https://github.com/your-username/typo3-frankenphp-template/actions)
+[![CI Build Check](https://github.com/mk3media/mk3m-frankentypo3/actions/workflows/docker-build.yml/badge.svg)](https://github.com/mk3media/mk3m-frankentypo3/actions)
 [![TYPO3 v13 / v14](https://img.shields.io/badge/TYPO3-v13%20%7C%20v14-orange.svg?logo=typo3)](https://typo3.org/)
 [![PHP 8.4](https://img.shields.io/badge/PHP-8.4-777bb4.svg?logo=php)](https://www.php.net/)
 [![FrankenPHP](https://img.shields.io/badge/FrankenPHP-1.12-blue.svg)](https://frankenphp.dev/)
@@ -103,7 +103,7 @@ FrankenPHP is a modern application server for PHP written in Go, built on top of
 ### 1. Clone & Configure Environment
 
 ```bash
-git clone https://github.com/your-username/typo3-frankenphp-template.git my-typo3-project
+git clone https://github.com/mk3media/mk3m-frankentypo3.git my-typo3-project
 cd my-typo3-project
 
 cp .env.example .env
@@ -111,7 +111,7 @@ cp .env.example .env
 
 Adjust your credentials and domain settings in `.env`:
 ```ini
-COMPOSE_PROJECT_NAME=my-typo3
+COMPOSE_PROJECT_NAME=mk3m-frankentypo3
 HTTP_PORT=8080
 MARIADB_ROOT_PASSWORD=your_secure_root_password
 MARIADB_PASSWORD=your_secure_db_password
