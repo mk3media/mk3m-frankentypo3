@@ -278,8 +278,14 @@ docker compose exec valkey valkey-cli -a "${VALKEY_PASSWORD}" flushall
 ---
 
 ## 🤝 Contributing
-
+ 
 Contributions, feedback, and pull requests are welcome! Please review our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before getting started.
+
+---
+
+## 👨‍💻 Maintainer & Attribution
+
+Created and maintained by **Matthias Kleinschmidt** ([@mk-73](https://github.com/mk-73)) for [**mk3media**](https://github.com/mk3media).
 
 ---
 

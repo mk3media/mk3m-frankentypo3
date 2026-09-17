@@ -19,8 +19,8 @@ We actively maintain and provide security updates for the following configuratio
 If you discover a security vulnerability within this repository or its container configurations, please do **NOT** open a public issue.
 
 Instead, please report security issues through:
-1. **GitHub Security Advisory**: Use the [Private Vulnerability Reporting](../../security/advisories/new) feature on GitHub.
-2. Alternatively, reach out directly to the repository maintainer.
+1. **GitHub Security Advisory**: Use the [Private Vulnerability Reporting](https://github.com/mk3media/mk3m-frankentypo3/security/advisories/new) feature on GitHub.
+2. Alternatively, reach out directly to the maintainer [@mk-73](https://github.com/mk-73) or [mk3media](https://github.com/mk3media).
 
 ### What to Include in Your Report
 - A detailed description of the vulnerability.

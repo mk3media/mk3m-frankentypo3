@@ -3,6 +3,12 @@
     "description": "TYPO3 CMS on FrankenPHP (Caddy) & Valkey",
     "license": "GPL-2.0-or-later",
     "type": "project",
+    "authors": [
+        {
+            "name": "Matthias Kleinschmidt",
+            "homepage": "https://github.com/mk-73"
+        }
+    ],
     "config": {
         "allow-plugins": {
             "typo3/class-alias-loader": true,
