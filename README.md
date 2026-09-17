@@ -163,19 +163,22 @@ The Caddyfile includes essential security directives:
   - Serves `Content-Type: text/plain` for `.wrong` test files to satisfy TYPO3 security audits.
   - Custom Content Security Policy (CSP) isolating user uploads.
 
-### Valkey / Redis Integration (`config/system/additional.php`)
-TYPO3 automatically routes its high-churn cache layers to Valkey using `\TYPO3\CMS\Core\Cache\Backend\RedisBackend`:
-- `pages` -> Database Index `0`
-- `pagesection` -> Database Index `1`
-- `hash` -> Database Index `2`
-- `rootline` -> Database Index `3`
+### Valkey / Redis Integration & System Settings (`config/system/additional.php`)
+The template includes a pre-configured `config/system/additional.php` that is mounted read-only into `/var/www/html/config/system/additional.php:ro`:
+- **Repository-Tracked**: Keeps caching rules, trusted hosts, and proxy configuration in Git while application code lives in persistent storage (`data/web`).
+- **High-Churn Cache Offloading**: Automatically routes TYPO3 cache groups to isolated Valkey DB partitions using `\TYPO3\CMS\Core\Cache\Backend\RedisBackend`:
+  - `pages` -> Database Index `0`
+  - `pagesection` -> Database Index `1`
+  - `hash` -> Database Index `2`
+  - `rootline` -> Database Index `3`
+- **Dynamic Environment Bridging**: Automatically reads `TRUSTED_HOSTS_PATTERN`, `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`, and permission masks (`0660`/`2770`) from `.env`.
 
 ### Reverse Proxy & Trusted Hosts
-When running behind a reverse proxy (e.g., host Caddy, Traefik, or Nginx):
+When running behind an ingress reverse proxy (e.g., host Caddy, Traefik, or Nginx):
 - `reverseProxySSL = '*'`
 - `reverseProxyIP = '*'`
 - `reverseProxyHeaderMultiValue = 'first'`
-- `trustedHostsPattern`: Controlled dynamically via the `TRUSTED_HOSTS_PATTERN` environment variable in `.env`.
+- `trustedHostsPattern`: Controlled dynamically via `TRUSTED_HOSTS_PATTERN` in `.env`.
 
 ---
 
