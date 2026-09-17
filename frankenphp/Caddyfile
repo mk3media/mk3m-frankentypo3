@@ -1,0 +1,64 @@
+{
+	# Disable global Caddy admin API when running in container
+	admin off
+	auto_https off
+
+	# Configure FrankenPHP thread pool
+	frankenphp {
+		num_threads 2
+	}
+
+	order php_server before file_server
+}
+
+:80 {
+	# Document root points to TYPO3 public/ directory
+	root * /var/www/html/public
+
+	# Enable Gzip and Zstandard compression
+	encode zstd gzip
+
+	# Security Response Headers
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-XSS-Protection "1; mode=block"
+	}
+
+	# Content Security Policy for user uploads
+	header /fileadmin/* Content-Security-Policy "default-src 'none'; script-src 'none'; style-src 'none'; object-src 'none';"
+	header /typo3temp/* Content-Security-Policy "default-src 'none'; script-src 'none'; style-src 'none'; object-src 'none';"
+
+	# Force text/plain MIME type for TYPO3 security test files ending in .wrong
+	@wrong path *.wrong
+	header @wrong Content-Type "text/plain"
+
+	# Deny access to hidden dotfiles and sensitive configuration files
+	@sensitive {
+		path .* composer.json composer.lock *.env
+	}
+	respond @sensitive "Forbidden" 403
+
+	# Block direct PHP execution inside upload and temporary asset directories
+	@upload_php {
+		path /fileadmin/*.php /typo3temp/*.php
+	}
+	respond @upload_php "Forbidden" 403
+
+	# Direct static file serving for upload and cache directories (avoids routing to index.php)
+	handle /fileadmin/* {
+		file_server
+	}
+	handle /typo3temp/* {
+		file_server
+	}
+
+	# Route all other requests to TYPO3 via FrankenPHP
+	handle {
+		php_server {
+			root /var/www/html/public
+			index index.php
+		}
+	}
+}

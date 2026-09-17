@@ -1,0 +1,27 @@
+name: CI Build Check
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    name: Build & Validate FrankenPHP Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Dockerfile
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frankenphp
+          file: ./frankenphp/Dockerfile
+          push: false
+          tags: typo3-frankenphp:test

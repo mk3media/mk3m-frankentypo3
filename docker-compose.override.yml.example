@@ -1,0 +1,20 @@
+# Example docker-compose.override.yml
+# Copy to docker-compose.override.yml to apply local customizations
+services:
+  web:
+    # Example: expose direct port 8080 on localhost
+    ports:
+      - "8080:80"
+    # Example: mount local project directory directly
+    # volumes:
+    #   - ./web:/var/www/html:rw
+
+  db:
+    # Example: expose database port for GUI clients (TablePlus, DBeaver, PhpMyAdmin)
+    ports:
+      - "127.0.0.1:3306:3306"
+
+  valkey:
+    # Example: expose Valkey/Redis port for local inspection
+    ports:
+      - "127.0.0.1:6379:6379"

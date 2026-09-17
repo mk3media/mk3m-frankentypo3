@@ -1,0 +1,86 @@
+services:
+  web:
+    container_name: ${COMPOSE_PROJECT_NAME:-typo3}-web
+    build:
+      context: ./frankenphp
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    security_opt:
+      - "no-new-privileges:true"
+    environment:
+      - GOMAXPROCS=${GOMAXPROCS:-2}
+      - GODEBUG=cgocheck=0
+      - GOMEMLIMIT=${GOMEMLIMIT:-768MiB}
+      - TYPO3_CONTEXT=${TYPO3_CONTEXT:-Development}
+      - TYPO3_PATH_APP=/var/www/html
+      - REDIS_HOST=valkey
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=${VALKEY_PASSWORD:-change_valkey_password}
+      - TRUSTED_HOSTS_PATTERN=${TRUSTED_HOSTS_PATTERN:-.*}
+    volumes:
+      - ${STORAGEPATH:-./data}/web:/var/www/html:rw
+      - ./frankenphp/Caddyfile:/var/www/html/Caddyfile:ro
+    ports:
+      - "${HTTP_PORT:-8080}:80"
+      - "${HTTPS_PORT:-8443}:443"
+    depends_on:
+      db:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "-H", "Host: ${APP_HOST:-localhost}", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - default
+
+  db:
+    container_name: ${COMPOSE_PROJECT_NAME:-typo3}-db
+    image: mariadb:lts
+    restart: unless-stopped
+    security_opt:
+      - "no-new-privileges:true"
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD:-change_root_password}
+      - MARIADB_USER=${MARIADB_USER:-typo3}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD:-change_user_password}
+      - MARIADB_DATABASE=${MARIADB_DATABASE:-typo3}
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --local-infile=0
+    volumes:
+      - ${STORAGEPATH:-./data}/mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mariadb", "-h", "localhost", "-u", "root", "-p${MARIADB_ROOT_PASSWORD:-change_root_password}", "-e", "SELECT 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    networks:
+      - default
+
+  valkey:
+    container_name: ${COMPOSE_PROJECT_NAME:-typo3}-valkey
+    image: valkey/valkey:7-alpine
+    restart: unless-stopped
+    security_opt:
+      - "no-new-privileges:true"
+    volumes:
+      - ${STORAGEPATH:-./data}/valkey:/data
+    command: valkey-server --appendonly yes --requirepass "${VALKEY_PASSWORD:-change_valkey_password}"
+    healthcheck:
+      test: ["CMD", "valkey-cli", "-a", "${VALKEY_PASSWORD:-change_valkey_password}", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    networks:
+      - default
+
+networks:
+  default:
+    name: ${COMPOSE_PROJECT_NAME:-typo3}_net

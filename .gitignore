@@ -1,0 +1,27 @@
+# Environment variables
+.env
+.env.local
+
+# Docker override
+docker-compose.override.yml
+
+# Storage / Data directories
+data/
+mysql/
+valkey/
+web/
+
+# TYPO3 temporary & variable data
+/var/
+/public/fileadmin/
+/public/typo3temp/
+/public/_assets/
+/vendor/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

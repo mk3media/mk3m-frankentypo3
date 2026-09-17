@@ -1,0 +1,62 @@
+{
+    "name": "my-vendor/typo3-frankenphp-site",
+    "description": "TYPO3 CMS on FrankenPHP & Valkey",
+    "license": "GPL-2.0-or-later",
+    "type": "project",
+    "config": {
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        },
+        "platform": {
+            "php": "8.4.0"
+        },
+        "sort-packages": true
+    },
+    "require": {
+        "typo3/cms-backend": "^13.4 || ^14.0",
+        "typo3/cms-belog": "^13.4 || ^14.0",
+        "typo3/cms-beuser": "^13.4 || ^14.0",
+        "typo3/cms-core": "^13.4 || ^14.0",
+        "typo3/cms-dashboard": "^13.4 || ^14.0",
+        "typo3/cms-extbase": "^13.4 || ^14.0",
+        "typo3/cms-extensionmanager": "^13.4 || ^14.0",
+        "typo3/cms-felogin": "^13.4 || ^14.0",
+        "typo3/cms-filelist": "^13.4 || ^14.0",
+        "typo3/cms-fluid": "^13.4 || ^14.0",
+        "typo3/cms-fluid-styled-content": "^13.4 || ^14.0",
+        "typo3/cms-form": "^13.4 || ^14.0",
+        "typo3/cms-frontend": "^13.4 || ^14.0",
+        "typo3/cms-impexp": "^13.4 || ^14.0",
+        "typo3/cms-info": "^13.4 || ^14.0",
+        "typo3/cms-install": "^13.4 || ^14.0",
+        "typo3/cms-reactions": "^13.4 || ^14.0",
+        "typo3/cms-recycler": "^13.4 || ^14.0",
+        "typo3/cms-rte-ckeditor": "^13.4 || ^14.0",
+        "typo3/cms-seo": "^13.4 || ^14.0",
+        "typo3/cms-setup": "^13.4 || ^14.0",
+        "typo3/cms-sys-note": "^13.4 || ^14.0",
+        "typo3/cms-tstemplate": "^13.4 || ^14.0",
+        "typo3/cms-viewpage": "^13.4 || ^14.0",
+        "typo3/cms-webhooks": "^13.4 || ^14.0",
+        "typo3/cms-workspaces": "^13.4 || ^14.0"
+    },
+    "require-dev": {
+        "friendsoftypo3/content-blocks": "^2.0",
+        "helhum/typo3-console": "^8.3"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/*"
+        }
+    ],
+    "scripts": {
+        "post-autoload-dump": [
+            "@prepare-structure"
+        ],
+        "prepare-structure": [
+            "mkdir -p public/fileadmin public/typo3temp var/lock var/log var/cache packages"
+        ]
+    }
+}
