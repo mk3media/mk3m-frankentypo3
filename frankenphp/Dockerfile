@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:1.12.4-php8.4-bookworm
+FROM dunglas/frankenphp:1.12.7-php8.4-bookworm
 
 LABEL org.opencontainers.image.title="mk3m-frankentypo3" \
       org.opencontainers.image.description="High-performance TYPO3 runtime with FrankenPHP, Caddy, and Valkey" \

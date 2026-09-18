@@ -65,7 +65,7 @@ FrankenPHP is a modern application server for PHP written in Go, built on top of
                                         │ (Reverse Proxy via HTTP/HTTPS)
                                         ▼
     ┌───────────────────────────────────────────────────────────────────────┐
-    │ FrankenPHP Web Container (:80 / :443)                                │
+    │ FrankenPHP Web Container (:80 / :443)                                 │
     │ ┌───────────────────────────────────────────────────────────────────┐ │
     │ │ Caddy Web Server (Static assets, CSP, Security headers)           │ │
     │ └─────────────────────────────────┬─────────────────────────────────┘ │
