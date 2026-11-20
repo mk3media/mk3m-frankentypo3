@@ -3,7 +3,7 @@
 [![CI Build Check](https://github.com/mk3media/mk3m-frankentypo3/actions/workflows/docker-build.yml/badge.svg)](https://github.com/mk3media/mk3m-frankentypo3/actions)
 [![TYPO3 v13 / v14](https://img.shields.io/badge/TYPO3-v13%20%7C%20v14-orange.svg?logo=typo3)](https://typo3.org/)
 [![PHP 8.4](https://img.shields.io/badge/PHP-8.4-777bb4.svg?logo=php)](https://www.php.net/)
-[![FrankenPHP](https://img.shields.io/badge/FrankenPHP-1.12-blue.svg)](https://frankenphp.dev/)
+[![FrankenPHP](https://img.shields.io/badge/FrankenPHP-1.13-blue.svg)](https://frankenphp.dev/)
 [![Caddy Server](https://img.shields.io/badge/Web_Server-Caddy_v2-22b8cf.svg?logo=caddy)](https://caddyserver.com/)
 [![Valkey 7 / 8](https://img.shields.io/badge/Cache-Valkey-red.svg)](https://valkey.io/)
 [![License: GPL-2.0](https://img.shields.io/badge/License-GPL--2.0-blue.svg)](LICENSE)
@@ -92,7 +92,7 @@ FrankenPHP is a modern application server for PHP written in Go, built on top of
 
 | Service | Image / Base | Description |
 | :--- | :--- | :--- |
-| **`web`** | `dunglas/frankenphp:1.12-php8.4-bookworm` | Web application runtime, embedded Caddy server, Composer, ImageMagick |
+| **`web`** | `dunglas/frankenphp:1.13-php8.4-trixie` | Web application runtime, embedded Caddy server, Composer, ImageMagick |
 | **`db`** | `mariadb:lts` | Persistent SQL database configured with `utf8mb4_unicode_ci` |
 | **`valkey`** | `valkey/valkey:7-alpine` | High-speed in-memory cache server with password authentication |
 
